@@ -6,3 +6,11 @@
   Certificados
 - autenticacion de textos encriptados con clave publica: si no se autentica, 
 un adversario puede inyectar claves que   podrian ser usadas por el usuario para encriptar sus archivos
+
+- cada archivo tendrá una id
+- cada archivo podrá desencriptarse con una llave
+- hacer que el usuarios guarde dichas llaves localmente (el servidor nunca las ve)
+
+ok thanks, first i want to try something... So ive been playing around with the rsa library and 
+i was thinking that a simple way of having this encrypted cloud for sharing files would be to do something like 
+attach to each user a list of dictionaries containing username:[list(public_key)] where each public_key
