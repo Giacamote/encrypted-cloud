@@ -1,0 +1,8 @@
+- recordar usar EtM (encrypt then mac)
+- RSA: permite a alicia entregar la clave publica (n,e) para que cualquiera encripte mensajes y se los envie (solo ella puede desencriptar).
+- Firmas digitales: alicia distribuye una clave publica a sus verificadores. 
+  Luego, alicia genera una firma para un documento M usando su clave privada. 
+  Luego cualquier persona (verificador) puede verificar que la firma que se le pase es efectivamente de alicia para el documento M
+  Certificados
+- autenticacion de textos encriptados con clave publica: si no se autentica, 
+un adversario puede inyectar claves que   podrian ser usadas por el usuario para encriptar sus archivos
