@@ -1,4 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 venv
+env/
 .env
-/instance/database.db
-/instance/uploads
+instance/
+uploads/
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
