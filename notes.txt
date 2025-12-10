@@ -19,4 +19,10 @@ DSA: digital signature algorithm.
 ECDSA: eliptic curve digital signature algorithm
 
 
+cosas que sabe el servidor adversario:
+- Sabe quienes pertenecen a cuales grupos y conoce sus claves publicas
+- podria crear grupos no deseados y añadir ahí a usuarios, 
+  debido a que la creacion de grupos no está autenticada...
+
+
 - un archivo pertenece a un solo grupo. podria hacerce que pertenezca a varios grupos?

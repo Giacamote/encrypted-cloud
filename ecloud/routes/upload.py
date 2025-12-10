@@ -15,6 +15,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def upload_file():
     file = request.files.get("file")
     group_id=request.form.get("group_id")
+    if group_id == "": group_id = None #que sean nulos, no empty
     if not file:
         flash("No file selected.", "danger")
         return redirect(url_for("dashboard.dashboard"))
@@ -61,7 +62,8 @@ def download_file(file_id):
 
     # Ensure user owns the file
     if file.owner_id != current_user.id:
-        abort(403)
+        if file.group_id is None or current_user not in file.group.members:
+            abort(403)
 
     return send_from_directory(
         UPLOAD_FOLDER,
@@ -80,7 +82,7 @@ def delete_file(file_id):
     file = File.query.get_or_404(file_id)
 
     # Prevent deleting files of other users
-    if file.owner_id != current_user.id:
+    if file.owner_id != current_user.id and file.group.owner_id != current_user.id:
         abort(403)
     
     file_path = os.path.join(UPLOAD_FOLDER, file.stored_filename)
