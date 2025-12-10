@@ -6,7 +6,13 @@ class File(db.Model):
     stored_filename = db.Column(db.String(260), nullable=False, unique=True)
     mimetype = db.Column(db.String(120))
     size = db.Column(db.Integer)
-    upload_time = db.Column(db.DateTime,default=lambda: datetime.now(timezone.utc))
+    upload_time = db.Column(db.DateTime,default=lambda: datetime.now(timezone.utc)
+                            )
     owner_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     owner = db.relationship("User", back_populates="files")
+
     group_id = db.Column(db.Integer, db.ForeignKey("group.id"), nullable=True)
+    group = db.relationship("Group", back_populates="files")
+
+    iv_b64 = db.Column(db.Text, nullable=False)#iv para AES-GCM  
+    signature_b64 = db.Column(db.Text, nullable=False)# firma ECDSA 

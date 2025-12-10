@@ -18,7 +18,7 @@ attach to each user a list of dictionaries containing username:[list(public_key)
 DSA: digital signature algorithm. 
 ECDSA: eliptic curve digital signature algorithm
 
-
+esquema hibrido, archivos se encriptan simetricamente
 cosas que sabe el servidor adversario:
 - Sabe quienes pertenecen a cuales grupos y conoce sus claves publicas
 - podria crear grupos no deseados y añadir ahí a usuarios, 

@@ -13,13 +13,8 @@ class Group(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     owner = db.relationship("User", backref="owned_groups")
     #members: many to many
-    members = db.relationship(
-        "User",
-        secondary=group_members,
-        backref=db.backref("groups", lazy="dynamic"),
-        lazy="dynamic"
-    )
-    files = db.relationship("File", backref="group", lazy=True)
+    members = db.relationship("User", secondary="group_members", back_populates="groups")
+    files = db.relationship("File", back_populates="group")
 
     def __repr__(self):
         return f"<Group {self.groupname}>"

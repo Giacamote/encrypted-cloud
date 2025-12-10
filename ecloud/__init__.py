@@ -28,11 +28,14 @@ def create_app():
     from ecloud.routes.auth import auth_bp
     from ecloud.routes.dashboard import dashboard_bp
     from ecloud.routes.upload import upload_bp
-    
+    from ecloud.routes.group_keys import keys_bp
+    from ecloud.routes.api import api_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(upload_bp)
     app.register_blueprint(groups_bp)
+    app.register_blueprint(keys_bp)
+    app.register_blueprint(api_bp)
 
     with app.app_context():
         from ecloud.models.user import User
