@@ -9,3 +9,4 @@ class File(db.Model):
     upload_time = db.Column(db.DateTime,default=lambda: datetime.now(timezone.utc))
     owner_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     owner = db.relationship("User", back_populates="files")
+    group_id = db.Column(db.Integer, db.ForeignKey("group.id"), nullable=True)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Group</title>
+</head>
+<body>
+
+<h1>Create a New Group</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.groupname.label }}<br>
+        {{ form.groupname(size=30) }}
+    </p>
+    <h3>Select users:</h3>
+  {% for user in users %}
+    <div>
+      <input type="checkbox" name="users" value="{{ user.id }}" id="user_{{ user.id }}">
+      <label for="user_{{ user.id }}">{{ user.username }}</label>
+    </div>
+  {% endfor %}
+    <p>{{ form.submit() }}</p>
+</form>
+
+</body>
+</html>

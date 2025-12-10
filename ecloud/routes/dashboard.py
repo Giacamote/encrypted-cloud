@@ -9,10 +9,14 @@ dashboard_bp = Blueprint("dashboard", __name__)
 def dashboard():
     upload_form = UploadForm()
     user_files = current_user.files
+    user_groups=current_user.groups
+    #poblar dropdown
+    upload_form.group_id.choices = [(g.id, g.groupname) for g in user_groups]
     return render_template("dashboard.html", 
                            user=current_user, 
                            upload_form=upload_form, 
-                           files=user_files)
+                           files=user_files,
+                           user_groups=user_groups)
 
 @dashboard_bp.route("/")
 def home():

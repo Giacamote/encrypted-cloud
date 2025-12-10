@@ -14,3 +14,9 @@ un adversario puede inyectar claves que   podrian ser usadas por el usuario para
 ok thanks, first i want to try something... So ive been playing around with the rsa library and 
 i was thinking that a simple way of having this encrypted cloud for sharing files would be to do something like 
 attach to each user a list of dictionaries containing username:[list(public_key)] where each public_key
+
+DSA: digital signature algorithm. 
+ECDSA: eliptic curve digital signature algorithm
+
+
+- un archivo pertenece a un solo grupo. podria hacerce que pertenezca a varios grupos?

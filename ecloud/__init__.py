@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 
 from ecloud.extensions import db, bcrypt, login_manager
-
+from ecloud.routes.groups import groups_bp
 def create_app():
     load_dotenv()
 
@@ -32,9 +32,13 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(upload_bp)
+    app.register_blueprint(groups_bp)
 
     with app.app_context():
-        from ecloud.models import User, File
+        from ecloud.models.user import User
+        from ecloud.models.file import File
+        from ecloud.models.group import Group
+
         db.create_all()
 
     return app

@@ -14,6 +14,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 @login_required
 def upload_file():
     file = request.files.get("file")
+    group_id=request.form.get("group_id")
     if not file:
         flash("No file selected.", "danger")
         return redirect(url_for("dashboard.dashboard"))
@@ -39,7 +40,8 @@ def upload_file():
         stored_filename=stored_filename,
         mimetype=file.mimetype,
         size=os.path.getsize(save_path),
-        owner_id=current_user.id
+        owner_id=current_user.id,
+        group_id=group_id
     )
     db.session.add(new_file)
     db.session.commit()
